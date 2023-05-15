@@ -75,7 +75,7 @@ function probe_ssl {
 
 function probe_url {
   [[ -z "${GET_FLAG}" ]] && CURL_OPTIONS+=("--head")
-  [[ -n "${IP}" ]] && CURL_OPTIONS+=("--resolve *:80:${IP}" "--resolve *:443:${IP}")
+  [[ -n "${IP}" ]] && CURL_OPTIONS+=("--resolve" "*:80:${IP}" "--resolve" "*:443:${IP}")
   curl "${URL}" "${CURL_OPTIONS[@]}" \
     | grep --color=always -E "^IP:|^URL:|^Redirects:|^Time:|"
 }
